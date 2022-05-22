@@ -1,0 +1,21 @@
+.Subreddit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Subreddit img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.Subreddit_add, .Subreddit_remove {
+  color: var(--color-content);
+  height: 100%;
+  width: 1.5rem;
+  margin-right: 0.1rem;
+  cursor: pointer;
+}
+

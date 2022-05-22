@@ -1,0 +1,13 @@
+.item {
+    text-align: center;
+    margin: 1rem auto 1rem;
+    padding: 1rem 0rem;
+    width: 80%;
+    color: var(--color-content);
+    background-color: var(--color-background1);
+    box-shadow: var(--box-shadow);
+    border-radius: 0.3rem;
+}
+.item-container-header {
+    margin-bottom: 1rem;
+}

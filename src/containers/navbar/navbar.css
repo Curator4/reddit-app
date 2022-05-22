@@ -1,0 +1,61 @@
+.navbar {
+  background: var(--color-background1);
+  height: 3rem;
+  box-shadow: var(--box-shadow);
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  height: 100%;
+}
+.navbar-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.navbar-logo-icon {
+  color: var(--color-content2);
+  height: 100%;
+  width: 2rem;
+}
+.navbar-logo p {
+    color: var(--color-content2);
+    margin-left: 0.5rem;
+}
+p span {
+    color: var(--color-content)
+}
+.navbar-groups {
+    display: flex;
+    align-items: center;
+}
+.navbar-groups-add{
+    height:1rem;
+    width:1rem;
+}
+.navbar-groups-add-icon, .navbar-groups-remove-icon {
+    color: #5dbb63;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+.navbar-groups-list {
+    color: var(--color-content);
+    font-size: 0.8rem;
+    margin-left: 0.1rem;
+}
+.navbar-menus-search {
+    color: var(--color-content);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+.navbar-menus-search-icon {
+    color: var(--color-content);
+    height: 100%;
+    width: 1.5rem;
+    margin-right: 0.1rem;
+}
