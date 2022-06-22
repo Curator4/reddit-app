@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navbar, Canvas, AddGroup } from "./containers";
-import { selectDisplay } from "./store/addGroupSlice.js";
 import "./App.css";
 
 function App() {

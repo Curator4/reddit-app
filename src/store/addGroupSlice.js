@@ -10,6 +10,7 @@ const options = {
       members: [],
     },
     searchTerm: "",
+    groupMembers: [],
     subreddits: [],
     error: false,
     isLoading: false,
@@ -40,10 +41,14 @@ const options = {
     },
     setMembers: (state, action) => (state.group.members = action.payload),
     addMember: (state, action) => {
-      state.group.members.push(action.payload);
+      state.group.members.push(action.payload.url);
+      state.groupMembers.push(action.payload);
     },
     removeMember: (state, action) => {
       state.group.members = state.group.members.filter(
+        (subreddit) => subreddit.id !== action.payload.id
+      );
+      state.groupMembers = state.groupMembers.filter(
         (subreddit) => subreddit.id !== action.payload.id
       );
     },

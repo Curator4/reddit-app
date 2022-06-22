@@ -1,0 +1,17 @@
+.LoadingBox {
+  margin: 1rem 1rem;
+  display:flex;
+  flex-direction: column;
+}
+.LoadingBox-subreddit {
+  text-align: center;
+}
+.LoadingBox-subreddit-title {
+  color: var(--color-content);
+}
+.LoadingBox-animation-checkmark {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

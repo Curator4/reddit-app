@@ -1,7 +1,7 @@
 import React from "react";
 import { Subreddit } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { selectGroup, appendGroup } from "../../store/groupsSlice.js";
+import { appendGroup } from "../../store/groupsSlice.js";
 import {
   setSearchTerm,
   setName,
@@ -15,8 +15,7 @@ import "./addGroup.css";
 
 const AddGroup = () => {
   const addGroup = useSelector((state) => state.addGroup);
-  const { searchTerm, subreddits, group } = addGroup;
-  const { members } = group;
+  const { searchTerm, subreddits, group, groupMembers } = addGroup;
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -49,11 +48,18 @@ const AddGroup = () => {
               <form className="AddGroup_container_body_info_data_form">
                 <label>
                   Name:
-                  <input type="text" placeholder=" Name" onChange={e => dispatch(setName(e.target.value))} />
+                  <input
+                    type="text"
+                    placeholder=" Name"
+                    onChange={(e) => dispatch(setName(e.target.value))}
+                  />
                 </label>
                 <label>
                   Description:
-                  <textarea placeholder="Group description" onChange={(e) => dispatch(setDescription(e.target.value))} />
+                  <textarea
+                    placeholder="Group description"
+                    onChange={(e) => dispatch(setDescription(e.target.value))}
+                  />
                 </label>
                 <label>
                   Private:
@@ -65,7 +71,7 @@ const AddGroup = () => {
               <h3>Subreddits in Group</h3>
             </div>
             <div className="AddGroup_container_body_info_subreddits">
-              {members.map((member) => {
+              {groupMembers.map((member) => {
                 return (
                   <Subreddit subreddit={member} member={true} key={member.id} />
                 );
@@ -88,7 +94,7 @@ const AddGroup = () => {
             </div>
             <div className="AddGroup_container_body_search_subreddits">
               {subreddits.slice(0, 12).map((subreddit) => {
-                if (members.some((member) => member.id === subreddit.id)) {
+                if (groupMembers.some((member) => member.id === subreddit.id)) {
                   return null;
                 }
                 return (

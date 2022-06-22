@@ -1,6 +1,6 @@
 import React from "react";
 import { Groups } from "../../containers";
-import { toggleDisplay, selectDisplay } from "../../store/addGroupSlice.js";
+import { toggleDisplay } from "../../store/addGroupSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { FaReddit } from "react-icons/fa";
 import { IoIosAddCircle, IoIosRemoveCircle, IoMdSearch } from "react-icons/io";
