@@ -96,6 +96,10 @@
 .AddGroup_container_body_addButton {
   padding: 0.1rem 1rem;
 }
+.AddGroup_failmessage {
+  color:maroon;
+  margin-top: 0.5rem;
+}
 label {
   justify-content: center;
 }

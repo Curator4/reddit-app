@@ -15,8 +15,12 @@ const options = {
     error: false,
     isLoading: false,
     display: false,
+    duplicate: false,
   },
   reducers: {
+    isDuplicate: (state, action) => {
+      state.duplicate = action.payload;
+    },
     startGetSubreddits: (state) => {
       state.isLoading = true;
       state.error = false;
@@ -41,7 +45,11 @@ const options = {
     },
     setMembers: (state, action) => (state.group.members = action.payload),
     addMember: (state, action) => {
-      state.group.members.push(action.payload.url);
+      state.group.members.push({
+        name: action.payload.url,
+        icon: action.payload.icon_img,
+        isLoading: false,
+      });
       state.groupMembers.push(action.payload);
     },
     removeMember: (state, action) => {
@@ -54,6 +62,16 @@ const options = {
     },
     toggleDisplay: (state) => {
       state.display = !state.display;
+    },
+    resetAddGroupSlice: (state) => {
+      state.group = {
+        name: "",
+        description: "",
+        members: [],
+      };
+      state.searchTerm = "";
+      state.groupMembers = [];
+      state.subreddits = [];
     },
   },
 };
@@ -70,6 +88,8 @@ export const {
   removeMember,
   setMembers,
   toggleDisplay,
+  isDuplicate,
+  resetAddGroupSlice,
 } = addGroupSlice.actions;
 
 // Thunk to update searched subreddits

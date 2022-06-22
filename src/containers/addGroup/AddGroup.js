@@ -8,6 +8,8 @@ import {
   setDescription,
   fetchSearchSubreddits,
   toggleDisplay,
+  isDuplicate,
+  resetAddGroupSlice,
 } from "../../store/addGroupSlice.js";
 import { IoMdSearch } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,7 +17,9 @@ import "./addGroup.css";
 
 const AddGroup = () => {
   const addGroup = useSelector((state) => state.addGroup);
-  const { searchTerm, subreddits, group, groupMembers } = addGroup;
+  const groupsSlice = useSelector((state) => state.groups);
+  const { groups } = groupsSlice;
+  const { searchTerm, subreddits, group, groupMembers, duplicate } = addGroup;
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -31,12 +35,20 @@ const AddGroup = () => {
   };
 
   const handleAddGroup = () => {
+    if (groups.some((element) => group.name === element.name)) {
+      dispatch(isDuplicate(true));
+      return;
+    }
     dispatch(appendGroup(group));
+    dispatch(toggleDisplay());
+    dispatch(isDuplicate(false));
+    dispatch(resetAddGroupSlice());
   };
+
   return (
     <div className="AddGroup">
       <div className="AddGroup_container">
-        <h2>Edit Group</h2>
+        <h2>Add Group</h2>
         <AiOutlineClose
           className="Addgroup_close_button"
           onClick={handleClose}
@@ -114,6 +126,11 @@ const AddGroup = () => {
         >
           Add Group
         </button>
+        {duplicate && (
+          <div className="AddGroup_failmessage">
+            Cannot have duplicate group names
+          </div>
+        )}
       </div>
     </div>
   );

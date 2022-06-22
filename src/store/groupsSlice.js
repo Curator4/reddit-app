@@ -164,7 +164,7 @@ const options = {
     memberLoadingSuccess: (state, action) => {
       state.groups
         .find((group) => group.name === state.currentGroupName)
-        .members.map((member) => {
+        .members.forEach((member) => {
           if (member.name === action.payload) {
             member.isLoading = false;
           }

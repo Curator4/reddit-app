@@ -19,6 +19,7 @@ export const Items = () => {
       return;
     }
     dispatch(fetchGroupData(group));
+    // eslint-disable-next-line
   }, [currentGroupName]);
 
   if (isLoading) {
